@@ -1,36 +1,46 @@
 package sample;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
 public class Controller {
 
     @FXML
-    private Button buttonCalculate;
+    private TextField textFieldTargetFunctionNumOne;
     @FXML
-    private TextField textFieldTargetFunction;
-    @FXML
+    private TextField textFieldTargetFunctionNumTwo;
+    /*@FXML
     private TextField textFieldStartingPoint;
     @FXML
     private TextField textFieldUnconditionalMinimum;
     @FXML
-    private TextField textFieldLambda;
+    private TextField textFieldLambda;*/
 
     private GraphicalAnalysis graphicalAnalysis = new GraphicalAnalysis();
 
     @FXML
     private void calculate() {
 
-        String[] symbols = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "-", "*", "/", "^", "x", "y"};
-        String targetFunction = textFieldTargetFunction.getText();
-
+        String[] symbols = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
+        String targetFunctionNumOne = textFieldTargetFunctionNumOne.getText();
+        String targetFunctionNumTwo = textFieldTargetFunctionNumTwo.getText();
+        byte counter = 0;
+        //TODO: проверка каждого символа по отдельности
         for (String symbol : symbols) {
-            if (!targetFunction.equals(symbol)) {
-                //TODO: сообщение о недопустимом символе
-                return;
+            if ((!targetFunctionNumOne.equals(symbol) || (!targetFunctionNumTwo.equals(symbol)))) {
+                counter++;
             }
         }
-        graphicalAnalysis.graphicalAnalysis(targetFunction);
+
+        if (counter == 10) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Ошибка!");
+            alert.setContentText("В поля num1 и num2 допускается вводить только цифры");
+            alert.showAndWait();
+        } else {
+            graphicalAnalysis.graphicalAnalysis(targetFunctionNumOne, targetFunctionNumOne);
+        }
     }
 }

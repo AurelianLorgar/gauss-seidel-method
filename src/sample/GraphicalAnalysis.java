@@ -1,10 +1,24 @@
 package sample;
 
+import javafx.fxml.FXML;
+import javafx.scene.chart.BubbleChart;
+
 class GraphicalAnalysis {
 
-    void graphicalAnalysis(String targetFunction){
+    @FXML
+    private BubbleChart bubbleChart;
+
+    void graphicalAnalysis(String targetFunctionNumberOne, String targetFunctionNumberTwo){
 
         int[] functionValue = {25, 50, 100, 200};
-        String tFunction = targetFunction;
+
+        double[] firstValue;
+
+        int numberOne = Integer.parseInt(targetFunctionNumberOne);
+        int numberTwo = Integer.parseInt(targetFunctionNumberTwo);
+
+        for (int aFunctionValue : functionValue) {
+
+        }
     }
 }
