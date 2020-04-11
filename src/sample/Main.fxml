@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.chart.BubbleChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.*?>
-<Group fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-       fx:controller="sample.Controller">
+
+<Group xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
         <Pane prefHeight="600.0" prefWidth="1000.0">
             <children>
-                <Button layoutX="31.0" layoutY="336.0" onAction="#calculate" text="Рассчитать!"/>
-                <TextField fx:id="textFieldTargetFunctionNumOne" layoutX="75.0" layoutY="55.0" prefHeight="25.0"
-                           prefWidth="80.0"/>
-                <TextField fx:id="textFieldTargetFunctionNumTwo" layoutX="75.0" layoutY="88.0" prefHeight="25.0"
-                           prefWidth="80.0"/>
-                <TextField fx:id="textFieldStartingPoint" layoutX="21.0" layoutY="156.0"/>
-                <TextField fx:id="textFieldUnconditionalMinimum" layoutX="21.0" layoutY="221.0"/>
-                <TextField fx:id="textFieldLambda" layoutX="21.0" layoutY="286.0"/>
-                <Text layoutX="30.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                      text="Целевая функция вида &#10;(x-num1)^2+(y-num2)^2+(x-num1)(y-num2)"/>
-                <Text layoutX="30.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="num1 = "/>
-                <Text layoutX="30.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="num2 = "/>
-                <Text layoutX="31.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                      text="Начальная точка x(0)"/>
-                <Text layoutX="31.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Безусловный минимум"/>
-                <Text layoutX="31.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="λ"/>
+                <Button layoutX="30.0" layoutY="335.0" onAction="#calculate" text="Рассчитать!" />
+                <TextField fx:id="textFieldTargetFunctionNumOne" layoutX="75.0" layoutY="55.0" prefHeight="25.0" prefWidth="80.0" />
+                <TextField fx:id="textFieldTargetFunctionNumTwo" layoutX="75.0" layoutY="88.0" prefHeight="25.0" prefWidth="80.0" />
+                <TextField fx:id="textFieldStartingPoint" layoutX="21.0" layoutY="156.0" />
+                <TextField fx:id="textFieldUnconditionalMinimum" layoutX="21.0" layoutY="221.0" />
+                <TextField fx:id="textFieldLambda" layoutX="21.0" layoutY="286.0" />
+                <Text layoutX="30.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Целевая функция вида &#10;(x-num1)^2+(y-num2)^2+(x-num1)(y-num2)" />
+                <Text layoutX="30.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="num1 = " />
+                <Text layoutX="30.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="num2 = " />
+                <Text layoutX="31.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Начальная точка x(0)" />
+                <Text layoutX="31.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Безусловный минимум" />
+                <Text layoutX="31.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="λ" />
                 <BubbleChart fx:id="bubbleChart" layoutX="300.0" legendSide="LEFT" prefHeight="600.0" prefWidth="680.0">
                     <xAxis>
-                        <NumberAxis lowerBound="-60.0" side="BOTTOM" tickUnit="10.0" upperBound="60.0"/>
+                        <NumberAxis lowerBound="-60.0" side="BOTTOM" tickUnit="10.0" upperBound="60.0" />
                     </xAxis>
                     <yAxis>
-                        <NumberAxis lowerBound="-60.0" side="LEFT" tickUnit="10.0" upperBound="60.0"/>
+                        <NumberAxis lowerBound="-60.0" side="LEFT" tickUnit="10.0" upperBound="60.0" />
                     </yAxis>
                 </BubbleChart>
             </children>
