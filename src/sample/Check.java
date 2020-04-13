@@ -4,7 +4,7 @@ class Check {
 
     boolean checkSymbols(String numberOne, String numberTwo) {
 
-        char[] symbols = {'1', '2', '3', '4', '5', '6', '7', '8', '9', '0'};
+        char[] symbols = {'1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-'};
         char[] numOneChar = numberOne.toCharArray();
         char[] numTwoChar = numberTwo.toCharArray();
 
@@ -18,7 +18,7 @@ class Check {
                 }
             }
 
-            for (int j = 0; j < numOneChar.length; j++) {
+            for (int j = 0; j < numTwoChar.length; j++) {
                 if (symbol != numTwoChar[j]) {
                     counterTwo[j]++;
                 }
@@ -30,7 +30,7 @@ class Check {
     private boolean getResult(byte[] counterArray) {
 
         for (byte counter : counterArray) {
-            if (counter == 10) {
+            if (counter == 11) {
                 return true;
             }
         }

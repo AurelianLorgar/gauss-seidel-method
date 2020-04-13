@@ -1,56 +1,81 @@
 package sample;
 
-import javafx.fxml.FXML;
-import javafx.scene.chart.BubbleChart;
+import java.util.ArrayList;
 
 class GraphicalAnalysis {
 
-    @FXML
-    private BubbleChart bubbleChart;
+    ArrayList<Double> xPlusFirst = new ArrayList<>();
+    ArrayList<Double> xMinusFirst = new ArrayList<>();
+    ArrayList<Double> yAxisFirst = new ArrayList<>();
 
+    ArrayList<Double> xPlusSecond = new ArrayList<>();
+    ArrayList<Double> xMinusSecond = new ArrayList<>();
+    ArrayList<Double> yAxisSecond = new ArrayList<>();
+
+    ArrayList<Double> xPlusThird = new ArrayList<>();
+    ArrayList<Double> xMinusThird = new ArrayList<>();
+    ArrayList<Double> yAxisThird = new ArrayList<>();
+
+    ArrayList<Double> xPlusFourth = new ArrayList<>();
+    ArrayList<Double> xMinusFourth = new ArrayList<>();
+    ArrayList<Double> yAxisFourth = new ArrayList<>();
+
+    //TODO попытаться распаралеллить, чтобы было в разных потоках (надеюсь, будет работать быстрее)
     void graphicalAnalysis(String targetFunctionNumberOne, String targetFunctionNumberTwo) {
 
         MathOperations mathOperations = new MathOperations();
 
+        ArrayList<Double> yAxisArray = new ArrayList<>();
+
         double numberOne = Integer.parseInt(targetFunctionNumberOne);
         double numberTwo = Integer.parseInt(targetFunctionNumberTwo);
+        double checkPlus;
+        double checkMinus;
 
-        int[] functionValue = {25, 50, 100, 200};
+        int[] functionValue = {25, 50, 75, 100};
 
-        double[] y = {0, 2, -2, 4, -4, 6, -6, 8, -8, 10, -10, 12, -12, 14};
-
-        /*TODO: переделать массивы в листы, иначе ничего не выйдет, после чего сделать удаление одинаковых элементов и
-          TODO: засунуть всё это в BubbleChart*/
-        double[] xPlusFirst = new double[y.length];
-        double[] xMinusFirst = new double[y.length];
-
-        double[] xPlusSecond = new double[y.length];
-        double[] xMinusSecond = new double[y.length];
-
-        double[] xPlusThird = new double[y.length];
-        double[] xMinusThird = new double[y.length];
-
-        double[] xPlusFourth = new double[y.length];
-        double[] xMinusFourth = new double[y.length];
+        for (double i = -100; i < 100.01; i = i + 0.01) {
+            yAxisArray.add(new MathOperations().round(i));
+        }
 
         for (int i = 0; i < functionValue.length; i++) {
-            for (int j = 0; j < y.length; j++) {
+            for (double y : yAxisArray) {
                 switch (i) {
                     case (0):
-                        xPlusFirst[j] = mathOperations.calculatePlus(y[j], numberOne, numberTwo, functionValue[i]);
-                        xMinusFirst[j] = mathOperations.calculateMinus(y[j], numberOne, numberTwo, functionValue[i]);
+                        checkPlus = mathOperations.calculatePlus(y, numberOne, numberTwo, functionValue[i]);
+                        checkMinus = mathOperations.calculateMinus(y, numberOne, numberTwo, functionValue[i]);
+                        if ((checkPlus != -1.0) && (checkMinus != -1.0)) {
+                            xPlusFirst.add(checkPlus);
+                            xMinusFirst.add(checkMinus);
+                            yAxisFirst.add(y);
+                        }
                         break;
                     case (1):
-                        xPlusSecond[j] = mathOperations.calculatePlus(y[j], numberOne, numberTwo, functionValue[i]);
-                        xMinusSecond[j] = mathOperations.calculateMinus(y[j], numberOne, numberTwo, functionValue[i]);
+                        checkPlus = mathOperations.calculatePlus(y, numberOne, numberTwo, functionValue[i]);
+                        checkMinus = mathOperations.calculateMinus(y, numberOne, numberTwo, functionValue[i]);
+                        if ((checkPlus != -1.0) && (checkMinus != -1.0)) {
+                            xPlusSecond.add(checkPlus);
+                            xMinusSecond.add(checkMinus);
+                            yAxisSecond.add(y);
+                        }
                         break;
                     case (2):
-                        xPlusThird[j] = mathOperations.calculatePlus(y[j], numberOne, numberTwo, functionValue[i]);
-                        xMinusThird[j] = mathOperations.calculateMinus(y[j], numberOne, numberTwo, functionValue[i]);
+                        checkPlus = mathOperations.calculatePlus(y, numberOne, numberTwo, functionValue[i]);
+                        checkMinus = mathOperations.calculateMinus(y, numberOne, numberTwo, functionValue[i]);
+                        if ((checkPlus != -1.0) && (checkMinus != -1.0)) {
+                            xPlusThird.add(checkPlus);
+                            xMinusThird.add(checkMinus);
+                            yAxisThird.add(y);
+                        }
                         break;
                     case (3):
-                        xPlusFourth[j] = mathOperations.calculatePlus(y[j], numberOne, numberTwo, functionValue[i]);
-                        xMinusFourth[j] = mathOperations.calculateMinus(y[j], numberOne, numberTwo, functionValue[i]);
+                        checkPlus = mathOperations.calculatePlus(y, numberOne, numberTwo, functionValue[i]);
+                        checkMinus = mathOperations.calculateMinus(y, numberOne, numberTwo, functionValue[i]);
+                        if ((checkPlus != -1.0) && (checkMinus != -1.0)) {
+                            xPlusFourth.add(checkPlus);
+                            xMinusFourth.add(checkMinus);
+                            yAxisFourth.add(y);
+                        }
                         break;
                 }
             }

@@ -66,7 +66,7 @@ class MathOperations {
         }
     }
 
-    private double round(double num) {
+    double round(double num) {
         BigDecimal bd = new BigDecimal(Double.toString(num));
         bd = bd.setScale(2, RoundingMode.HALF_UP);
         return bd.doubleValue();
