@@ -2,7 +2,9 @@ package sample;
 
 import java.util.ArrayList;
 
-class GraphicalAnalysis {
+class GraphicalAnalysis extends Thread{
+
+    private MathOperations mathOperations = new MathOperations();
 
     ArrayList<Double> xPlusFirst = new ArrayList<>();
     ArrayList<Double> xMinusFirst = new ArrayList<>();
@@ -20,13 +22,10 @@ class GraphicalAnalysis {
     ArrayList<Double> xMinusFourth = new ArrayList<>();
     ArrayList<Double> yAxisFourth = new ArrayList<>();
 
-    //TODO попытаться распаралеллить, чтобы было в разных потоках (надеюсь, будет работать быстрее)
     void graphicalAnalysis(String targetFunctionNumberOne, String targetFunctionNumberTwo) {
 
-        MathOperations mathOperations = new MathOperations();
-
         ArrayList<Double> yAxisArray = new ArrayList<>();
-
+        //FIXME конвертировать в дабл по человечески, а не через инт
         double numberOne = Integer.parseInt(targetFunctionNumberOne);
         double numberTwo = Integer.parseInt(targetFunctionNumberTwo);
         double checkPlus;

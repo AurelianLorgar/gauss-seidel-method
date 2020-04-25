@@ -2,35 +2,32 @@ package sample;
 
 class Check {
 
-    boolean checkSymbols(String numberOne, String numberTwo) {
+    boolean checkSymbols(String number) {
 
-        char[] symbols = {'1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-'};
-        char[] numOneChar = numberOne.toCharArray();
-        char[] numTwoChar = numberTwo.toCharArray();
 
-        byte[] counterOne = new byte[numOneChar.length];
-        byte[] counterTwo = new byte[numTwoChar.length];
+        if (number.equals("")) {
+            return true;
+        }
+
+        char[] symbols = {'1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '.', ','};
+        char[] numChar = number.toCharArray();
+
+        byte[] counter = new byte[numChar.length];
 
         for (char symbol : symbols) {
-            for (int j = 0; j < numOneChar.length; j++) {
-                if (symbol != numOneChar[j]) {
-                    counterOne[j]++;
-                }
-            }
-
-            for (int j = 0; j < numTwoChar.length; j++) {
-                if (symbol != numTwoChar[j]) {
-                    counterTwo[j]++;
+            for (int j = 0; j < numChar.length; j++) {
+                if (symbol != numChar[j]) {
+                    counter[j]++;
                 }
             }
         }
-        return (getResult(counterOne)) && (getResult(counterTwo));
+        return getResult(counter);
     }
 
     private boolean getResult(byte[] counterArray) {
 
         for (byte counter : counterArray) {
-            if (counter == 11) {
+            if (counter == 13) {
                 return true;
             }
         }

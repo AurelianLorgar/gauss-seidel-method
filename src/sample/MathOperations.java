@@ -47,6 +47,20 @@ class MathOperations {
         return minus;
     }
 
+    double calculateFunction(double pointX, double pointY) {
+
+        double result;
+        double bracketsOne = pointX - 7;
+        double bracketsTwo = pointY - 6;
+        double bracketsMultiply = bracketsOne * bracketsTwo;
+
+        bracketsOne = power(bracketsOne);
+        bracketsTwo = power(bracketsTwo);
+        result = bracketsOne + bracketsTwo + bracketsMultiply;
+
+        return result;
+    }
+
     private double power(double num) {
         double result;
 
